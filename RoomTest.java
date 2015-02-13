@@ -92,7 +92,7 @@ public class RoomTest {
 	
 	//I wasn't sure on how to test this method because descriptions are created randomly and using entirely
 	//private methods; so I settled on testing this method by checking that it does have a description by seeing
-	//wheteher the description is NULL or not
+	//whether the description is NULL or not
 	@Test
 	public void testGetDescription(){
 		Room r = new Room (true, true, true, true, true);
