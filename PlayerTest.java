@@ -38,6 +38,12 @@ public class PlayerTest {
 		assertFalse(p1.hasAllItems());
 	}
 	
+	//Last combination of items for hasAllItems function
+	@Test
+	public void testHasTwoOtherItems(){
+		Player p1 = new Player(false, true, true);
+		assertFalse(p1.hasAllItems());
+	}
 	//hAI should return false when it has just 1 item
 	@Test
 	public void testHasOneItem(){
@@ -62,6 +68,14 @@ public class PlayerTest {
 		assertEquals(false, p1.drink());
 	}
 	
+	//test just cream by itself for 100% code coverage
+	@Test
+	public void testDrinkCream(){
+		Player p1 = new Player();
+		p1.getCream();
+		assertFalse(p1.drink());
+	}
+	
 	//drink should also return false when there are two items available
 	@Test
 	public void testDrinkTwoItems(){
@@ -69,7 +83,23 @@ public class PlayerTest {
 		assertFalse(p1.drink());
 	}
 	
-	//drink shoud return true when all items are acquired
+	//drink two different items to test that scenario
+	@Test
+	public void testDrinkTwoOtherItems(){
+		Player p1 = new Player(true, true, false);
+		assertFalse(p1.drink());
+	}
+	
+	//drinking just cream and coffee
+	@Test
+	public void testDrinkCoffeeAndCream(){
+		Player p1 = new Player();
+		p1.getCoffee();
+		p1.getCream();
+		assertFalse(p1.drink());
+	}
+	
+	//drink should return true when all items are acquired
 	@Test
 	public void testDrinkThreeItems(){
 		Player p1 = new Player(true, true, true);
