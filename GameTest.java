@@ -1,8 +1,11 @@
 package com.laboon;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.mockito.*;
+import java.io.*;
 
 public class GameTest {
 	@Mock
@@ -101,7 +104,7 @@ public class GameTest {
 		assertTrue(retval == -1);
 	}
 
-	//Sending uppercase D into a function while stubbing function to assume player has all ingredients
+	//Sending upper case D into a function while stubbing function to assume player has all ingredients
 	//drinking should result in winning the game
 	@Test
 	public void testDoSomethingDwin()
@@ -113,7 +116,7 @@ public class GameTest {
 		assertTrue(retval == 1);
 	}
 
-	//Sending lowercase d into a function while stubbing function to assume player has all ingredients
+	//Sending lower case d into a function while stubbing function to assume player has all ingredients
 	//drinking should result in winning the game
 	@Test
 	public void testDoSomethingdwin()
@@ -125,6 +128,36 @@ public class GameTest {
 		assertTrue(retval == 1);
 	}
 
-
+	
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final PrintStream original = System.out;
+	
+	@Before
+	public void setUpStreams(){
+		System.setOut(new PrintStream(outContent));
+	}
+	
+	//Tests whether the H command is implemented in the coffee maker quest program
+	@Test
+	public void testDoSomethingH()
+	{
+		Game game1 = new Game(player1, house1);
+		game1.doSomething("H");
+		assertEquals ("Help message here.", outContent.toString());
+	}
+	
+	//test for lower case h command
+	@Test
+	public void testDoSomethingh()
+	{
+		Game game1 = new Game(player1, house1);
+		game1.doSomething("h");
+		assertEquals ("Help message here.", outContent.toString());
+	}
+	
+	@After
+	public void cleanUpStreams()
+	{
+		System.setOut(original);
+	}
 }
-
