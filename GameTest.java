@@ -8,7 +8,9 @@ public class GameTest {
 	@Mock
 	House house1 = Mockito.mock(House.class);
 	Player player1 = Mockito.mock(Player.class);
-
+	
+	
+	//Sending uppercase N into function and verifying the game responds appropriately by moving north
 	@Test
 	public void testDoSomethingN()
 	{
@@ -16,7 +18,7 @@ public class GameTest {
 		game1.doSomething("N");
 		Mockito.verify(house1).moveNorth();
 	}
-
+	//Sending lowercase n into function and verifying the game responds appropriately by moving north
 	@Test
 	public void testDoSomethingn()
 	{
@@ -25,6 +27,7 @@ public class GameTest {
 		Mockito.verify(house1).moveNorth();
 	}
 
+	//Sending uppercase S into function and verifying the game responds appropriately by moving south
 	@Test
 	public void testDoSomethingS()
 	{
@@ -32,7 +35,7 @@ public class GameTest {
 		game1.doSomething("S");
 		Mockito.verify(house1).moveSouth();
 	}
-
+	//Sending lowercase s into function and verifying the game responds appropriately by moving south
 	@Test
 	public void testDoSomethings()
 	{
@@ -41,6 +44,7 @@ public class GameTest {
 		Mockito.verify(house1).moveSouth();
 	}
 
+	//Sending uppercase L into function and verifying the game responds appropriately by looking
 	@Test
 	public void testDoSomethingL()
 	{
@@ -49,6 +53,7 @@ public class GameTest {
 		Mockito.verify(house1).look(player1,  null);
 	}
 
+	//Sending lowercase l into function and verifying the game responds appropriately by looking
 	@Test
 	public void testDoSomethingl()
 	{
@@ -57,6 +62,7 @@ public class GameTest {
 		Mockito.verify(house1).look(player1,  null);
 	}
 
+	//Sending uppercase I into function and verifying the game responds appropriately by checking inventory
 	@Test
 	public void testDoSomethingI()
 	{
@@ -64,7 +70,9 @@ public class GameTest {
 		game1.doSomething("I");
 		Mockito.verify(player1).showInventory();
 	}
-
+	
+	
+	//Sending lowercase i into function and verifying the game responds appropriately by checking inventory
 	@Test
 	public void testDoSomethingi()
 	{
@@ -72,7 +80,8 @@ public class GameTest {
 		game1.doSomething("i");
 		Mockito.verify(player1).showInventory();
 	}
-
+	
+	//Sending uppercase D into function and verifying the game responds appropriately by drinking without any ingredients
 	@Test
 	public void testDoSomethingD()
 	{
@@ -81,7 +90,8 @@ public class GameTest {
 		retval = game1.doSomething("D");
 		assertTrue(retval == -1);
 	}
-
+	
+	//Sending lowercase d into function and verifying the game responds appropriately by drinking without any ingredients
 	@Test
 	public void testDoSomethingd()
 	{
@@ -91,6 +101,8 @@ public class GameTest {
 		assertTrue(retval == -1);
 	}
 
+	//Sending uppercase D into a function while stubbing function to assume player has all ingredients
+	//drinking should result in winning the game
 	@Test
 	public void testDoSomethingDwin()
 	{
@@ -101,6 +113,8 @@ public class GameTest {
 		assertTrue(retval == 1);
 	}
 
+	//Sending lowercase d into a function while stubbing function to assume player has all ingredients
+	//drinking should result in winning the game
 	@Test
 	public void testDoSomethingdwin()
 	{
